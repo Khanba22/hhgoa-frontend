@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import TradeChart from "../Components/TradeChart";
 
 const loadScript = (src: string) => {
   return new Promise<void>((resolve, reject) => {
@@ -95,7 +96,7 @@ const MarqueeWidget: React.FC = () => {
   );
 };
 
-const App: React.FC = () => {
+const ApiPage: React.FC = () => {
   const coins: string[] = ["TRX", "SOL", "NEAR", "ETH", "AVAX", "DOT"];
   const [currentCoin, setCurrentCoin] = useState<string>("TRX");
 
@@ -104,31 +105,21 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="relative bg-black" style={{ height: "100vh" }}>
-      <h1 className="text-white text-center text-5xl pt-10">Heading</h1>
-      <div className="flex absolute top-36 h-5/12 w-1/2 bg-black justify-evenly mx-20  items-center flex-col">
-        <CryptoWidget key={currentCoin} coin={currentCoin} />
-        <select
-          name="coin-select"
-          value={currentCoin}
-          onChange={handleChange}
-          className="mt-4 outline-none bg-green-400 w-6/12 px-2 py-1 border rounded"
-        >
-          {coins.map((coin) => (
-            <option key={coin} value={coin}>
-              {coin}
-            </option>
-          ))}
-        </select>
+    <div
+      className="relative flex flex-wrap justify-center items-center pt-10 bg-black"
+      style={{ height: "100vh" }}
+    >
+      <div className="flex w-1/2 h-full justify-evenly pb-60 items-center flex-col">
+          <TradeChart />
       </div>
-      <div className="absolute top-10 right-0 mt-10 mr-4">
+      <div className="h-full">
         <GeneralMarketWidget />
       </div>
-      <div className="mt-4 fixed w-full bg-black bottom-0">
+      <div className="mt-4 fixed w-screen bg-black bottom-0">
         <MarqueeWidget />
       </div>
     </div>
   );
 };
 
-export default App;
+export default ApiPage;

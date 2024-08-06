@@ -6,12 +6,10 @@ import Banner from "../Components/Banner";
 import Features from "../Components/Features";
 import Team from "../Components/Team";
 import Footer from "../Components/Footer";
-import MarqueeWidget from "../Components/MarqueeWidget";
 
 const HomePage = () => {
   return (
     <>
-      <MarqueeWidget />
       <Header />
       <Hero />
       <About />
